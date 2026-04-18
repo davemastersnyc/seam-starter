@@ -36,9 +36,10 @@ Assign the zone that matches the highest-risk element in scope.
 
 | Zone | Label | When to use |
 |---|---|---|
-| 1 | Move Fast | Net new surface, no existing users or flows affected |
-| 2 | Move With Intention | Touches flows existing users already rely on |
-| 3 | Move Deliberately | Touches compliance, payments, legal, or sensitive data |
+| 1 | Move Fast | No external dependencies. Self-contained. Anyone with the skill can own it end to end. |
+| 2 | Coordinated | Depends on another team, API, or data source. Named reviewer required before staging. |
+| 3 | Provisional | Vendor or integration unconfirmed. Build container and placeholder states only; no internal logic until confirmed. |
+| 4 | Move Deliberately | Compliance, payment, or legal exposure. Legal or compliance sign-off required before design starts. |
 
 ---
 
@@ -107,6 +108,6 @@ Goal: [which goal from context/goals.md this moves, and how]
 
 5. Gate classification
 Gate 1 (PDVF): [run /pdvf-filter if not already done, or summarize confidence]
-Gate 2 (Zone): [Zone 1 / 2 / 3 with rationale]
+Gate 2 (Zone): [Zone 1 / 2 / 3 / 4 with rationale]
 Gate owner: [from context/team.md decision rules]
 ```

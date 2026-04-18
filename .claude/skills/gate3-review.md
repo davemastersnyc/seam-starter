@@ -2,6 +2,8 @@
 
 Part of the [Product Pacing Zones](https://quietbranches.com/work/product-pacing-zones/) framework by Quiet Branches Labs.
 
+Three outcome tests adapted from David J. Bland's [Testing Business Ideas](https://www.amazon.com/Rapid-Testing-Business-Ideas-Customer/dp/1119551447).
+
 Shipping is a hypothesis. Gate 3 is the proof. Work is not finished when it hits production; it is finished when the behavior change predicted in Gate 1 actually happens. Unlike Gates 1 and 2, Gate 3 is retrospective. It forces the team to look at shipped work through the lens of impact. If the signal is weak, the work does not just sit in the product. It gets refined, pivoted, or removed.
 
 ---
@@ -38,6 +40,8 @@ If you rolled this back tomorrow, who would complain and why? If the answer is "
 
 ### Gate 3: Outcome Review
 **Feature:** [name what was given]
+**Zone:** [1 / 2 / 3 / 4 -- infer from context if not stated; note if unknown]
+**Review window:** [Zone 1: 14 days | Zone 2: 30 days | Zone 3/4: 60 days -- flag if review is premature]
 **Time since ship:** [if known]
 **Signal available:** [summarize what the user provided]
 
@@ -76,5 +80,7 @@ Result: Pass / Inconclusive / Fail
 > If "no signal": the failure is almost always that P was less real than assumed, or D did not address it. Both are Gate 1 failures, not execution failures. Say so.
 
 > If signal data was not available: name exactly what needs to be measured, the method for measuring it, and when the review should be rescheduled. Do not declare a result without signal.
+
+> Review cadence by zone: Zone 1 work reviews at 14 days post-ship. Zone 2 at 30 days. Zones 3 and 4 at 60 days. If the review is running before the window closes, note it -- early signal is informative but not conclusive. If the review is overdue, flag it explicitly.
 
 > If Gate 1 was not run before this feature shipped: note it. The absence of a predicted behavior change from Gate 1 means Gate 3 has nothing to evaluate against. The team needs to define the success metric before the review can complete.

@@ -67,7 +67,7 @@ Based on the answers above, assign a tier:
 
 Tier: [1 / 2 / 3]
 
-If Tier 2: run `/pdvf-filter` next to assess whether it's worth building.
+If Tier 2: run `/pdvf-filter` next to assess whether it's worth building. After that, run `/zone-classifier` to determine pace and what must clear before build starts.
 If Tier 3: flag to the account owner before any internal work begins.
 
 ---

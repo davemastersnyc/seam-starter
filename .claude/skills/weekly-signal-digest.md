@@ -47,6 +47,24 @@ Week of: [today's date]
 **What to watch**
 [1-2 things to monitor next week based on this week's signal.]
 
+**Context file updates**
+[Based on this week's signal, identify what needs updating before next week's digest:
+- context/voice-of-customer.md: [new themes, shifted pain points, or quotes worth adding -- or "no change"]
+- context/decisions.md: [any divergences resolved this week -- log the resolution with reasoning -- or "no change"]
+- context/goals.md: [any goal that no longer reflects current reality -- or "no change"]]
+
+---
+
+## After the digest
+
+If the digest surfaces new themes, contradicts standing decisions, or confirms a pattern that wasn't in the context files, update the relevant file directly:
+
+- New customer signal or shifted themes: update `context/voice-of-customer.md`
+- A divergence that got resolved this week: add a new entry to `context/decisions.md` with the reasoning
+- A goal that is no longer accurate: update `context/goals.md`
+
+The digest is the feedback loop. It only closes if the context files actually get updated.
+
 ---
 
 ## Behavior rules
