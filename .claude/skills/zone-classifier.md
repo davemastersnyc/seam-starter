@@ -65,7 +65,7 @@ Work through these questions in order. Stop as soon as a zone is determined.
 
 > If Zone 1: if progress is slow, the first question is shading quality, not process. thin context forces the builder to stop and ask. improve the shading before diagnosing the workflow. Re-run this classifier before writing any ticket that adds scope not in the original classification, introduces a new dependency, or adds a data write. If the surface has been in active development for 30 days without re-triage, re-run unconditionally.
 
-> If Zone 2: remind that the dependency blocks engineering, not learning. Zone 1-style discovery should continue while the blocker is open. If the dependency has not moved in 14 days, re-evaluate for PDVF.
+> If Zone 2: remind that the dependency blocks engineering, not learning. Zone 1-style discovery should continue while the blocker is open -- but only if meaningful work is available. If no high-value Zone 1 path exists during the hold, name that in the escalation. If the dependency has not moved in 14 days, re-evaluate for PDVF. Two redirects is the ceiling: after two gate owner changes without clearance, the surface triggers a formal go/no-go. Commit or kill. No third redirect.
 
 > If Zone 3: build the container and placeholder states only. No internal logic until the dependency resolves.
 
