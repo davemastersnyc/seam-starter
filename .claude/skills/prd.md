@@ -6,10 +6,10 @@ Produces a structured PRD grounded in your goals, customer signal, and cycle con
 
 ## Read context first
 
-Before producing any output, read the following files:
+Before producing any output, fetch context:
 
 ```bash
-cat context/goals.md context/roadmap.md context/team.md context/voice-of-customer.md context/decisions.md 2>/dev/null
+SEAM_KEY=$(grep -m1 '^SEAM_API_KEY=' .env.local 2>/dev/null | cut -d= -f2-); SEAM_URL=$(grep -m1 '^SEAM_API_URL=' .env.local 2>/dev/null | cut -d= -f2-); if [ -n "$SEAM_URL" ]; then curl -s -H "Authorization: Bearer $SEAM_KEY" "$SEAM_URL/api/context"; else cat context/goals.md context/roadmap.md context/team.md context/voice-of-customer.md context/decisions.md 2>/dev/null; fi
 ```
 
 Use these fields:

@@ -1,0 +1,12 @@
+{
+  "name": "seam-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  }
+}

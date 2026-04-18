@@ -93,9 +93,23 @@ The weekly digest is the feedback loop. Signal from customers and shipped work f
 
 The skills compound over time as your context files stay current. A 10-minute weekly pass through the files -- updating what's in flight, adding new customer quotes, logging decisions -- is what makes the system sharp.
 
+## Upgrade: live context API
+
+The starter kit reads from local files. When you're ready for context that updates automatically -- without anyone editing markdown by hand -- deploy the included API service.
+
+```
+seam-starter/
+  api/          ← deploy this to Vercel
+  context/      ← files the API serves
+```
+
+The API reads your context files from a public URL (default: GitHub raw content) and returns them as JSON. Any tool that commits to your repo updates the context automatically. Skills detect the API and switch to it when `SEAM_API_URL` is set in `.env.local` -- file-based mode stays fully functional without it.
+
+See [`api/README.md`](api/README.md) for setup instructions.
+
 ## Want the full version?
 
-The starter kit is self-serve. The full Seam installation includes live integrations with Linear, Slack, and Intercom, a context layer that updates automatically, and a configured setup for your team.
+The starter kit is self-serve. The full Seam installation includes a configured live context API, tool integrations (Linear, Slack, Intercom), and a setup tailored to your team's workflow.
 
 Book a scoping call: https://tidycal.com/davemastersnyc
 
