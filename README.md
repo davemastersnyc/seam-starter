@@ -1,6 +1,19 @@
 # Seam Starter Kit
 
-An AI operating system for product teams. Built on Claude Code.
+The bottleneck in product work used to be writing code.
+It isn't anymore.
+
+At AI-assisted velocity, a team can ship five features in the time
+it used to take to ship one. The constraint has moved: to deciding
+what to build, keeping everyone working from the same reasoning,
+and knowing whether what shipped actually changed anything.
+
+Seam is the context layer that makes those three things possible.
+It gives every AI tool on your team the same background before it
+starts: your goals, your customer signal, your standing decisions,
+and the reasoning behind them.
+
+This is the starter kit. Fifteen minutes to set up. Built on Claude Code.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
