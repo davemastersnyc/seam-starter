@@ -138,6 +138,8 @@ seam-starter/
 
 The API reads your context files from a public URL (default: GitHub raw content) and returns them as JSON. Any tool that commits to your repo updates the context automatically. Skills detect the API and switch to it when `SEAM_API_URL` is set in `.env.local` -- file-based mode stays fully functional without it.
 
+Working across multiple repos? Keep one context repo and point all your other repos at it via `SEAM_API_URL`. Update context once, every skill everywhere reads it automatically.
+
 See [`api/README.md`](api/README.md) for setup instructions.
 
 ## Want the full version?
