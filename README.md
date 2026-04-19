@@ -54,6 +54,17 @@ claude
 
 Type `/inbound-triage` and describe a request that came in this week.
 
+## How to edit your context files
+
+Open the `context/` folder in any text editor. If you're not sure which one to use:
+
+- Cursor (recommended if you're using Claude Code anyway)
+- VS Code
+- Any plain text editor. TextEdit on Mac, Notepad on Windows.
+- Or just open them directly in GitHub and edit in the browser if you cloned from there.
+
+The files are plain markdown. You don't need to know markdown to fill them in. Write in plain sentences. The skills don't care about formatting.
+
 ## How it works
 
 Every skill reads from your `context/` files before generating output. You fill the context once and keep it current. The skills handle the rest.
