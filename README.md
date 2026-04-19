@@ -90,7 +90,7 @@ flowchart TD
     CU -->|approved| ctx
 ```
 
-The weekly digest is the feedback loop. Signal from customers and shipped work flows back into your context files, keeping the whole system current.
+the write-back loop is the feedback mechanism. /gate3-review generates the diff. /context-update merges it. the weekly digest feeds in lighter signal between gate 3 reviews.
 
 ## Skills
 
@@ -105,7 +105,7 @@ The weekly digest is the feedback loop. Signal from customers and shipped work f
 | `/assumptions-map` | Map and pressure-test the riskiest assumptions behind a bet |
 | `/weekly-signal-digest` | Synthesize the week's signal every Monday |
 
-## keeping context current
+## Keeping Context Current
 
 the write-back loop handles this automatically.
 
