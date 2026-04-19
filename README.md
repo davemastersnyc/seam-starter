@@ -86,6 +86,8 @@ flowchart TD
     PR --> AM
     AM -->|ships| G3
     WS -.->|feeds back| ctx
+    G3 -->|context diff| CU["/context-update\nreview and merge"]
+    CU -->|approved| ctx
 ```
 
 The weekly digest is the feedback loop. Signal from customers and shipped work flows back into your context files, keeping the whole system current.
@@ -98,13 +100,20 @@ The weekly digest is the feedback loop. Signal from customers and shipped work f
 | `/pdvf-filter` | Gate 1 -- score an idea on Problem, Desirability, Viability, Feasibility |
 | `/zone-classifier` | Gate 2 -- classify work by risk and dependency level |
 | `/gate3-review` | Gate 3 -- did shipped work actually change behavior? |
+| `/context-update` | merge a gate 3 context diff back into your context files. one human reviews before anything is written. |
 | `/prd` | Full PRD grounded in your goals and customer signal |
 | `/assumptions-map` | Map and pressure-test the riskiest assumptions behind a bet |
 | `/weekly-signal-digest` | Synthesize the week's signal every Monday |
 
-## Keeping context current
+## keeping context current
 
-The skills compound over time as your context files stay current. A 10-minute weekly pass through the files -- updating what's in flight, adding new customer quotes, logging decisions -- is what makes the system sharp.
+the write-back loop handles this automatically.
+
+when /gate3-review runs, it produces two outputs: the outcome verdict and a context diff. paste the diff into /context-update. review the proposed changes. approve, edit, or reject. if approved, claude code writes the updates back to your context files and logs the change in decisions.md.
+
+the weekly signal digest is the lighter version of this, useful for customer signal that doesn't come from a gate 3 review. run it monday morning and skim the output for anything that should update your context files.
+
+a gate 3 review that produces no context diff is a flag. something was learned. if the diff is empty, write one sentence in your linear ticket explaining why.
 
 ## Upgrade: live context API
 
