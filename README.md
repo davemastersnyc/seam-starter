@@ -136,6 +136,8 @@ seam-starter/
   context/      ← files the API serves
 ```
 
+Note: the live API requires a cron secret to trigger automatic updates. Without it, the API works locally but context will not update automatically in production. To set this up, add `CRON_SECRET` to your Vercel environment variables. See [`api/README.md`](api/README.md) for the exact setup steps. Until that's configured, file-based mode works fully and nothing breaks -- updates just require a manual deploy.
+
 The API reads your context files from a public URL (default: GitHub raw content) and returns them as JSON. Any tool that commits to your repo updates the context automatically. Skills detect the API and switch to it when `SEAM_API_URL` is set in `.env.local` -- file-based mode stays fully functional without it.
 
 Working across multiple repos? Keep one context repo and point all your other repos at it via `SEAM_API_URL`. Update context once, every skill everywhere reads it automatically.
