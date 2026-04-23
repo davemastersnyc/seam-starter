@@ -18,14 +18,15 @@ No API keys, no integrations, no infrastructure. Just Claude Code and your conte
 
 ## Skills
 
-| Command | What it does | Run before... |
+| Command | What it does | When to run |
 |---|---|---|
-| `/inbound-triage` | Score an inbound request against your goals | Committing to anything |
-| `/pdvf-filter` | Gate 1 -- score an idea on Problem, Desirability, Viability, Feasibility | Writing a PRD |
-| `/zone-classifier` | Gate 2 -- classify work by risk and dependency level | Opening a sprint or epic |
-| `/gate3-review` | Gate 3 -- did the shipped work actually change behavior? | Retrospectives |
-| `/prd` | Full PRD grounded in your goals and customer signal | Opening a Linear epic |
-| `/assumptions-map` | Map and pressure-test the riskiest assumptions behind a bet | Any big decision |
+| `/inbound-triage` | Score an inbound request against your goals | Before committing to anything |
+| `/pdvf-filter` | Gate 1 -- score an idea on Problem, Desirability, Viability, Feasibility | Before writing a PRD |
+| `/zone-classifier` | Gate 2 -- classify work by risk and dependency level | Before opening a sprint or epic |
+| `/gate3-review` | Gate 3 -- did the shipped work actually change behavior? Emits a context diff. | At the end of a review window |
+| `/context-update` | Review and merge a context diff from /gate3-review or /weekly-signal-digest | After a diff is produced |
+| `/prd` | Full PRD grounded in your goals and customer signal | Before opening a Linear epic |
+| `/assumptions-map` | Map and pressure-test the riskiest assumptions behind a bet | Before any big decision |
 | `/weekly-signal-digest` | Synthesize the week's requests and customer signal | Monday morning |
 
 ## Context files

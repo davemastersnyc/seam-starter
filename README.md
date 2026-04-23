@@ -8,10 +8,15 @@ it used to take to ship one. The constraint has moved: to deciding
 what to build, keeping everyone working from the same reasoning,
 and knowing whether what shipped actually changed anything.
 
-Seam is the context layer that makes those three things possible.
-It gives every AI tool on your team the same background before it
-starts: your goals, your customer signal, your standing decisions,
-and the reasoning behind them.
+Most teams think they're aligned. They're sharing the shape of an
+idea: the ticket, the doc, the brief. Not the shading behind it:
+the reasoning, the customer context, the tradeoffs that were
+considered and rejected. At AI velocity, that gap compounds in
+days, not quarters.
+
+Seam maintains the shading. A shared context layer every AI tool
+on your team reads before it starts: your goals, your customer
+signal, your standing decisions, and the reasoning behind them.
 
 This is the starter kit. Fifteen minutes to set up. Built on Claude Code.
 
@@ -110,8 +115,8 @@ the write-back loop is the feedback mechanism. /gate3-review generates the diff.
 | `/inbound-triage` | Score an inbound request against your goals |
 | `/pdvf-filter` | Gate 1 -- score an idea on Problem, Desirability, Viability, Feasibility |
 | `/zone-classifier` | Gate 2 -- classify work by risk and dependency level |
-| `/gate3-review` | Gate 3 -- did shipped work actually change behavior? |
-| `/context-update` | merge a gate 3 context diff back into your context files. one human reviews before anything is written. |
+| `/gate3-review` | Gate 3 -- did shipped work actually change behavior? Emits a context diff. |
+| `/context-update` | Review and merge a context diff from /gate3-review or /weekly-signal-digest. One human reviews before anything is written. |
 | `/prd` | Full PRD grounded in your goals and customer signal |
 | `/assumptions-map` | Map and pressure-test the riskiest assumptions behind a bet |
 | `/weekly-signal-digest` | Synthesize the week's signal every Monday |
@@ -144,9 +149,26 @@ Working across multiple repos? Keep one context repo and point all your other re
 
 See [`api/README.md`](api/README.md) for setup instructions.
 
-## Want the full version?
+## What's in this kit vs. the full Seam
 
-The starter kit is self-serve. The full Seam installation includes a configured live context API, tool integrations (Linear, Slack, Intercom), and a setup tailored to your team's workflow.
+The starter kit is the self-serve core: the context layer, the skills that read it, and the write-back loop that keeps it current. Everything here runs locally on Claude Code. No services, no integrations, no API keys required.
+
+**What's in the starter**
+
+- 8 skills: `/inbound-triage`, `/pdvf-filter`, `/zone-classifier`, `/gate3-review`, `/context-update`, `/prd`, `/assumptions-map`, `/weekly-signal-digest`
+- 5 context files: goals, roadmap, team, voice-of-customer, decisions
+- The full write-back loop via `/gate3-review` into `/context-update`
+- An optional live context API (see the upgrade section above) for multi-repo setups
+
+**What the full Seam engagement adds (4-6 weeks)**
+
+- Tool integrations: Linear, Slack, Intercom, your analytics stack
+- Automatic inbound triage from support channels
+- A live context API configured and running for your team
+- Additional skills: design review briefs, account briefs, cycle kickoff, intercom synthesis, divergence detection, and context export
+- A setup tuned to how your team actually works
+
+If you're running the starter and bumping into the edges, that's usually when the full engagement starts earning its keep. You want triage to run automatically from Intercom. Context needs to update across five repos at once. Linear tickets need to read from the same source as the PRD skill.
 
 Book a scoping call: https://tidycal.com/davemastersnyc
 

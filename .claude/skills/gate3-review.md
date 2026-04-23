@@ -77,6 +77,48 @@ Result: Pass / Inconclusive / Fail
 
 ---
 
+## Proposed context diff
+
+Every Gate 3 review produces a proposed update to the context layer. Pass this block to `/context-update` to review and merge.
+
+```
+Source: gate3-review
+Feature: [feature name]
+Date: [today's date]
+
+Change 1 -- File: context/decisions.md
+Action: add
+Proposed: [YYYY-MM-DD] Gate 3 review: [feature name]
+  Verdict: [High / Mixed / No signal]
+  Behavior change observed: [one-sentence summary of what the data showed]
+  Reasoning: [why this shifts the standing view, if at all]
+  Next action: [mirror "Next action" above]
+
+Change 2 -- File: context/voice-of-customer.md
+Action: [add / update / "no change"]
+Current: [existing line being replaced, if any]
+Proposed: [any new signal, shifted theme, or customer quote this review surfaced -- or omit this change if nothing updates]
+Reasoning: [why this reflects real signal, not a convenient conclusion]
+
+Change 3 -- File: context/goals.md
+Action: [add / update / "no change"]
+Current: [existing line being replaced, if any]
+Proposed: [any goal that needs tightening, re-scoping, or retiring based on the outcome -- or omit if no change]
+Reasoning: [why]
+
+Change 4 -- File: context/roadmap.md
+Action: [add / update / "no change"]
+Current: [existing line being replaced, if any]
+Proposed: [any in-flight or planned item that should be reclassified, promoted, or killed based on this outcome -- or omit if no change]
+Reasoning: [why]
+```
+
+Include only the changes that actually apply. If the review produces no context diff, state: "No context diff: nothing learned that should change the context files. Name what you expected to learn and why the shipped work did not produce it."
+
+An empty diff is a flag, not a pass. A feature that ships without updating the shared context has not actually taught the team anything.
+
+---
+
 > If "no signal": the failure is almost always that P was less real than assumed, or D did not address it. Both are Gate 1 failures, not execution failures. Say so.
 
 > If signal data was not available: name exactly what needs to be measured, the method for measuring it, and when the review should be rescheduled. Do not declare a result without signal.
