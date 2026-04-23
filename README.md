@@ -59,29 +59,22 @@ claude
 
 Type `/inbound-triage` and describe a request that came in this week.
 
-## Already using Claude Code with your own setup?
+## Already have a Claude Code project? Add seam alongside it.
 
-Don't clone seam-starter as a standalone repo. Don't overwrite your CLAUDE.md. Add seam alongside what you already have.
+If you already have a project running with its own CLAUDE.md and skills, you don't need to clone this as a separate workspace. You can drop seam into your existing project, and your CLAUDE.md stays exactly as it is.
 
-**1. Copy the skills into your project.**
+Three things to do. No terminal commands required for any of it.
 
-```bash
-cp -r /path/to/seam-starter/.claude/skills/*.md /path/to/your-project/.claude/skills/
-```
+**1. Copy two folders from seam-starter into your project.**
 
-Claude Code picks them up automatically the next time you run `claude`. If any filename collides with a skill you already have (unlikely), rename the seam file.
+- Copy everything inside the `.claude/skills/` folder into your project's `.claude/skills/` folder. If your project doesn't have that folder yet, create it.
+- Copy the whole `context/` folder into the root of your project. That's the same folder your CLAUDE.md lives in.
 
-**2. Copy the context files into your project root.**
+Drag them in Finder or File Explorer. That's it for this step.
 
-```bash
-cp -r /path/to/seam-starter/context /path/to/your-project/
-```
+**2. Add five lines to the bottom of your existing CLAUDE.md.**
 
-These are plain markdown. Fill them in the same way you would for a standalone install.
-
-**3. Import seam's context from your existing CLAUDE.md.**
-
-Claude Code supports file imports via `@path` in CLAUDE.md. Add these five lines to the bottom of your existing CLAUDE.md:
+Open your CLAUDE.md in any text editor and paste these at the end:
 
 ```
 @context/goals.md
@@ -91,13 +84,17 @@ Claude Code supports file imports via `@path` in CLAUDE.md. Add these five lines
 @context/team.md
 ```
 
-Your existing CLAUDE.md stays untouched. Seam's context loads alongside everything you already had. Every skill (yours and seam's) now sees the same shared background.
+The `@` symbol tells Claude Code to load each of those files automatically every time you start a session. Your own CLAUDE.md stays untouched. Seam's context loads alongside it.
 
-**4. Run a skill.**
+**3. Fill in the five context files.**
 
-`/inbound-triage` is a good first one to verify the setup.
+Open the `context/` folder in your project. Each file has instructions at the top. Plain sentences are fine. No formatting required.
 
-You can do this in the other direction too: if you'd rather keep seam in its own folder (e.g. `seam/`), leave the files there and use `@seam/context/goals.md` etc. in your CLAUDE.md. Claude Code resolves relative paths from wherever the CLAUDE.md lives.
+To check that it worked, open Claude Code in your project and type `/inbound-triage`. Describe a recent request your team got. If the output references your real goals and roadmap, the setup is live.
+
+---
+
+**Want seam's files in their own subfolder instead of mixed with your project files?** Put them anywhere you like (e.g. in a folder called `seam/`) and update the paths in your CLAUDE.md to match, like `@seam/context/goals.md`. Claude Code will find them from wherever you point.
 
 ## How to edit your context files
 
