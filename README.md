@@ -24,20 +24,24 @@ This is the starter kit. Fifteen minutes to set up. Built on Claude Code.
 
 ## What you need
 
-- [Claude Code](https://claude.ai/code) installed (`npm install -g @anthropic-ai/claude-code`)
-- A Claude account (Pro or above recommended)
-- 15 minutes to fill in your context files
+- [Claude Code](https://claude.ai/code) installed. The linked page walks through the install, including the one-line command if you're comfortable in the terminal (`npm install -g @anthropic-ai/claude-code`).
+- A Claude account (Pro or above recommended).
+- About 15 minutes to fill in your context files.
 
 ## Setup
 
-**1. Clone this repo**
+**1. Get the starter kit onto your computer.**
+
+The simplest way: go to the [GitHub page](https://github.com/davemastersnyc/seam-starter), click the green **Code** button, choose **Download ZIP**, and unzip it wherever you keep projects.
+
+If you use git, you can clone instead:
 
 ```bash
 git clone https://github.com/davemastersnyc/seam-starter.git
 cd seam-starter
 ```
 
-**2. Fill in your context files**
+**2. Fill in your context files.**
 
 Open the `context/` folder. Each file has instructions inside. Fill in:
 
@@ -49,15 +53,19 @@ Open the `context/` folder. Each file has instructions inside. Fill in:
 
 Be honest and specific. Skills are only as useful as the context they draw from.
 
-**3. Open Claude Code**
+**3. Open Claude Code in the seam-starter folder.**
+
+In your terminal, navigate to the folder and type:
 
 ```bash
 claude
 ```
 
-**4. Run a skill**
+If you're not sure what a terminal is or how to navigate to the folder, the Claude Code install page from Step 1 covers it.
 
-Type `/inbound-triage` and describe a request that came in this week.
+**4. Run a skill.**
+
+In the Claude Code chat, type `/inbound-triage` and describe a request that came in this week.
 
 ## Already have a Claude Code project? Add seam alongside it.
 
@@ -143,7 +151,7 @@ flowchart TD
     CU -->|approved| ctx
 ```
 
-the write-back loop is the feedback mechanism. /gate3-review generates the diff. /context-update merges it. the weekly digest feeds in lighter signal between gate 3 reviews.
+The write-back loop is how your context stays current without anyone maintaining it by hand. `/gate3-review` generates a short list of proposed updates to your context files after each feature ships. `/context-update` lets you review and approve them. The weekly digest adds lighter updates between gate 3 reviews.
 
 ## Skills
 
@@ -158,19 +166,33 @@ the write-back loop is the feedback mechanism. /gate3-review generates the diff.
 | `/assumptions-map` | Map and pressure-test the riskiest assumptions behind a bet |
 | `/weekly-signal-digest` | Synthesize the week's signal every Monday |
 
-## Keeping Context Current
+## Keeping context current
 
-the write-back loop handles this automatically.
+The write-back loop handles this for you. You don't have to remember to update the context files by hand.
 
-when /gate3-review runs, it produces two outputs: the outcome verdict and a context diff. paste the diff into /context-update. review the proposed changes. approve, edit, or reject. if approved, claude code writes the updates back to your context files and logs the change in decisions.md.
+Here's how it runs in practice:
 
-the weekly signal digest is the lighter version of this, useful for customer signal that doesn't come from a gate 3 review. run it monday morning and skim the output for anything that should update your context files.
+1. After a feature ships and the review window closes, run `/gate3-review`.
+2. It produces two things: a verdict on whether the feature actually changed behavior, and a short list of proposed updates to your context files (a "context diff" -- just a plain-language list of what should be added, changed, or removed).
+3. Paste that list into `/context-update`. It walks through each proposed change.
+4. You reply with `approve`, `edit`, or `reject`. If you approve, Claude Code writes the changes to your context files and logs them in `decisions.md`.
 
-a gate 3 review that produces no context diff is a flag. something was learned. if the diff is empty, write one sentence in your linear ticket explaining why.
+The weekly signal digest is the lighter version of this, useful for customer signal that doesn't come from a gate 3 review. Run it Monday morning and skim the output for anything that should update your context files.
+
+A gate 3 review that produces no proposed updates is a flag, not a pass. Something was learned, or nothing was -- either way, write one sentence in the related ticket or doc explaining why.
 
 ## Upgrade: live context API
 
-The starter kit reads from local files. When you're ready for context that updates automatically -- without anyone editing markdown by hand -- deploy the included API service.
+**This section is for when you want to scale seam across multiple repos or a bigger team.** It involves a bit of infrastructure setup and is usually a job for an engineer on your team. The starter kit works fully without it -- this is an upgrade, not a requirement.
+
+**What it does in plain terms:** instead of every project reading context from its own local files, a small service hosts your context files at a single URL. Every project points at that URL. When you update one file in one place, every skill in every project sees the update the next time it runs.
+
+**When you'd want it:**
+- You have more than one repo (web, mobile, internal tools) and you want a single source of truth.
+- Your context is shifting often enough that editing it in five places is painful.
+- You're ready to hand off the setup to an engineer.
+
+**What's involved:**
 
 ```
 seam-starter/
@@ -178,13 +200,13 @@ seam-starter/
   context/      ← files the API serves
 ```
 
-Note: the live API requires a cron secret to trigger automatic updates. Without it, the API works locally but context will not update automatically in production. To set this up, add `CRON_SECRET` to your Vercel environment variables. See [`api/README.md`](api/README.md) for the exact setup steps. Until that's configured, file-based mode works fully and nothing breaks -- updates just require a manual deploy.
-
 The API reads your context files from a public URL (default: GitHub raw content) and returns them as JSON. Any tool that commits to your repo updates the context automatically. Skills detect the API and switch to it when `SEAM_API_URL` is set in `.env.local` -- file-based mode stays fully functional without it.
+
+The live API requires a cron secret to trigger automatic updates. Without it, the API works locally but context will not update automatically in production. To set this up, add `CRON_SECRET` to your Vercel environment variables. Until that's configured, file-based mode works fully and nothing breaks -- updates just require a manual deploy.
 
 Working across multiple repos? Keep one context repo and point all your other repos at it via `SEAM_API_URL`. Update context once, every skill everywhere reads it automatically.
 
-See [`api/README.md`](api/README.md) for setup instructions.
+See [`api/README.md`](api/README.md) for step-by-step setup instructions your engineer can follow.
 
 ## What's in this kit vs. the full Seam
 
