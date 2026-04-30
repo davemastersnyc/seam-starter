@@ -67,6 +67,8 @@ If you're not sure what a terminal is or how to navigate to the folder, the Clau
 
 In the Claude Code chat, type `/inbound-triage` and describe a request that came in this week.
 
+Once a request clears triage, run `/intake-to-zone` to get Gate 1 (PDVF) and Gate 2 (zone classification) in one pass, plus a run plan that names the signal target and review cap. See [docs/intake-to-zone.md](docs/intake-to-zone.md) for a short walkthrough.
+
 ## Already have a Claude Code project? Add seam alongside it.
 
 If you already have a project running with its own CLAUDE.md and skills, you don't need to clone this as a separate workspace. You can drop seam into your existing project, and your CLAUDE.md stays exactly as it is.
@@ -158,6 +160,7 @@ The write-back loop is how your context stays current without anyone maintaining
 | Command | What it does |
 |---|---|
 | `/inbound-triage` | Score an inbound request against your goals |
+| `/intake-to-zone` | Chain Gate 1 (PDVF) and Gate 2 (zone) in one pass, with a run plan |
 | `/pdvf-filter` | Gate 1 -- score an idea on Problem, Desirability, Viability, Feasibility |
 | `/zone-classifier` | Gate 2 -- classify work by risk and dependency level |
 | `/gate3-review` | Gate 3 -- did shipped work actually change behavior? Emits a context diff. |
@@ -214,7 +217,7 @@ The starter kit is the self-serve core: the context layer, the skills that read 
 
 **What's in the starter**
 
-- 8 skills: `/inbound-triage`, `/pdvf-filter`, `/zone-classifier`, `/gate3-review`, `/context-update`, `/prd`, `/assumptions-map`, `/weekly-signal-digest`
+- 9 skills: `/inbound-triage`, `/intake-to-zone`, `/pdvf-filter`, `/zone-classifier`, `/gate3-review`, `/context-update`, `/prd`, `/assumptions-map`, `/weekly-signal-digest`
 - 5 context files: goals, roadmap, team, voice-of-customer, decisions
 - The full write-back loop via `/gate3-review` into `/context-update`
 - An optional live context API (see the upgrade section above) for multi-repo setups
